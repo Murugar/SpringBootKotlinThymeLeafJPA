@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout">
+
+
+
+<div layout:fragment="content">
+
+<div class="panel panel-primary">
+
+<div class="panel-heading">Todo Info</div>
+
+<div class="panel-body">
+    
+    <div class="panel panel-success">
+
+    <div class="panel-heading">Todos</div>
+
+    <div class="panel-body">
+    
+    <ul>
+        <li th:each="todo : ${todos}" class="list-group">
+            <span th:text="${todo.name}" class="badge" ></span>
+            <form th:action="@{|/todos/${todo.id}|}" method="post" style="display: inline">
+                <input type="hidden" name="_method" value="delete"/>
+                <input type="submit" class="list-group-item-danger btn btn-link" value="Delete"/>
+            </form>
+            
+        </li>
+    </ul>
+    
+    </div>
+    
+    </div>
+
+
+    <div class="panel panel-danger">
+
+    <div class="panel-heading">Add a Todo</div>
+
+    <div class="panel-body"> 
+
+    
+    <div>
+        <form th:action="@{|/todos|}" method="post" th:object="${todo}">
+
+            <label>
+                <input type="text" name="name"/>
+            </label>
+
+            <input type="submit" class="btn btn-success"/>
+        </form>
+    </div>
+    
+    </div>
+    </div>
+    
+    </div>
+</div>
+</div>
+
+
+
+</html>

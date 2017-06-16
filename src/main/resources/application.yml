@@ -1,0 +1,16 @@
+server:
+  port: 8090
+  address: localhost
+  sessionTimeout: 0
+
+
+spring:
+  main:
+    show-banner: true
+  datasource:
+    platform: h2
+    url: "jdbc:h2:mem:"
+
+spring.jpa.hibernate.ddl-auto: create-drop
+
+spring.thymeleaf.cache: false
